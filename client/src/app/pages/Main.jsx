@@ -13,7 +13,6 @@ const Main = () => {
   const [values, setValues] = useState({ [NAME]: '', [ROOM]: '' });
 
   const handleChange = ({ target: { value, name } }) => {
-    console.log(values);
     setValues({ ...values, [name]: value });
   };
 
