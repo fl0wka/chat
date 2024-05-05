@@ -59,6 +59,7 @@ const Chat = () => {
 	}
 	const handleEmojiClick = ({ emoji }) => {
 		setMessage(`${message} ${emoji}`)
+		setOpen(!isOpen)
 	}
 	const handleClick = () => {
 		setOpen(!isOpen)
