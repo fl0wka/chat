@@ -1,3 +1,5 @@
-const trimStr = (str) => str.trim().toLowerCase();
+const trimStr = str => {
+	return str.trim().toLowerCase()
+}
 
-exports.trimStr = trimStr;
+exports.trimStr = trimStr
