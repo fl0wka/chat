@@ -19,6 +19,8 @@ const io = new Server(server, {
 	},
 })
 
+const admin = 'Admin'
+
 io.on('connection', socket => {
 	// коннектимся к сокету и забираем данные
 	socket.on('join', ({ name, room }) => {
@@ -33,7 +35,7 @@ io.on('connection', socket => {
 		// далее делаем emit на сторону клиента
 		socket.emit('message', {
 			data: {
-				user: { name: 'Admin' },
+				user: { name: admin },
 				message: userMessage,
 			},
 		})
@@ -41,7 +43,7 @@ io.on('connection', socket => {
 		// отправляем admin сообщения не только в чат вошедшего пользователя, но и в чаты других участников
 		socket.broadcast.to(user.room).emit('message', {
 			data: {
-				user: { name: 'Admin' },
+				user: { name: admin },
 				message: `К чату присоединился ${user.name}`,
 			},
 		})
@@ -67,7 +69,7 @@ io.on('connection', socket => {
 
 			io.to(room).emit('message', {
 				data: {
-					user: { name: 'Admin' },
+					user: { name: admin },
 					message: `${name} покинул(а) чат`,
 				},
 			})
